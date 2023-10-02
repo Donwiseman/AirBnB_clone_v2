@@ -11,6 +11,7 @@ app.url_map.strict_slashes = False
 
 @app.route('/')
 def hello():
+    """ Configures the root of the site which returns a word"""
     return "Hello HBNB!"
 
 
