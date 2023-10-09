@@ -62,3 +62,7 @@ class FileStorage:
             if key in FileStorage.__objects.keys():
                 del FileStorage.__objects[key]
                 self.save()
+
+    def close(self):
+        """ Restarts by reloading latest objects from file."""
+        self.reload()
