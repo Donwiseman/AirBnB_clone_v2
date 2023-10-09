@@ -76,3 +76,4 @@ class DBStorage:
     def close(self):
         """ Ends the scoped session and allows for a new one to start. """
         self.__session.remove()
+        self.reload()
