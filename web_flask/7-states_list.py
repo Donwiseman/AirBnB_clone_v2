@@ -20,8 +20,10 @@ def state_list():
 
 
 @app.teardown_appcontext
-def app_teardown():
+def app_teardown(exception=None):
     """ Help in closing each request session. """
     storage.close()
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
