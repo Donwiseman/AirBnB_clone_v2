@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" starts a Flask web application that displays Hello HBNB!"""
+""" starts a Flask web application that displays Lists all the available
+    States and their respective Cities. """
 
 from flask import Flask
 from flask import render_template
