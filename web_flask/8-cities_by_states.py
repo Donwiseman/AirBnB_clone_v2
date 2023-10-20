@@ -14,7 +14,7 @@ app.url_map.strict_slashes = False
 
 
 @app.route('/cities_by_states')
-def state_list():
+def cities_by_states():
     """ Displays a list of all available states and their cities"""
     states = storage.all(State)
     return render_template('8-cities_by_states.html', n=states)
