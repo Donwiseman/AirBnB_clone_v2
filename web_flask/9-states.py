@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" starts a Flask web application that displays Hello HBNB!"""
+""" starts a Flask web application. """
 
 from flask import Flask
 from flask import render_template
@@ -12,18 +12,19 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
+@app.teardown_appcontext
+def app_teardown(exception=None):
+    """ Ends SQLAlchey session after each request session. """
+    storage.close()
+
+
 @app.route('/states', defaults={'id': ''})
 @app.route('/states/<id>')
 def states(id=''):
-    """Displays a list of all available states and their cities if specified"""
+    """Returns HTML that displays a list of all available states
+    and their cities if specified. """
     states = storage.all(State)
     return render_template('9-states.html', n=states, id=id)
-
-
-@app.teardown_appcontext
-def app_teardown(exception=None):
-    """ Help in closing each request session. """
-    storage.close()
 
 
 if __name__ == '__main__':
