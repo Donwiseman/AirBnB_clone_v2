@@ -1,15 +1,10 @@
 #!/usr/bin/python3
 """ starts a Flask web application. """
 
-from flask import Flask
-from flask import render_template
-from markupsafe import escape
+from flask import Flask, render_template
 from models import storage, State
 
 app = Flask(__name__)
-
-# Set strict_slashes to False
-app.url_map.strict_slashes = False
 
 
 @app.teardown_appcontext
@@ -18,8 +13,8 @@ def app_teardown(exception=None):
     storage.close()
 
 
-@app.route('/states', defaults={'id': ''})
-@app.route('/states/<id>')
+@app.route('/states', defaults={'id': ''}, strict_slashes=False)
+@app.route('/states/<id>', strict_slashes=False)
 def states(id=''):
     """Returns HTML that displays a list of all available states
     and their cities if specified. """
